@@ -8,19 +8,19 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
     <title>Pizza</title>
 </head>
-<body>
+<body class="bg-danger-subtle">
 
     <div th:replace="fragments/header :: headerSito"></div>
     
     <div th:if="${pizza != null}" class="container mt-4 d-flex justify-content-center align-items-center">
         <div class="text-center">
             <h1 th:text="${pizza.nome}"></h1>
-            <img th:src="${pizza.foto}" alt="Immagine pizza" width="200" class="my-3">
+            <img th:src="${pizza.foto}" alt="Immagine pizza" width="400" class="my-3">
             <p>Prezzo: <span th:text="${pizza.prezzo} + ' €'"></span></p>
         </div>
     </div>
     
-    <div th:if="${pizza == null}" class="container">
+    <div th:if="${pizza == null}" class="container mt-3">
         <h2>Pizza non trovata</h2>
         <p>La pizza che stai cercando non esiste o è stata rimossa.</p>
     </div>

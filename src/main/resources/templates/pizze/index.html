@@ -8,12 +8,13 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
     <title>Pizze</title>
 </head>
-<body>
+<body class="bg-danger-subtle">
     
     <div th:replace="fragments/header :: headerSito"></div>
 
-    <div th:if="${lista.isEmpty()}">
-        <p>La lista è vuota</p>
+    <div class="container mt-3" th:if="${lista.isEmpty()}">
+        <h2>Pizza non trovata</h2>
+        <p>La pizza che stai cercando non esiste o è stata rimossa.</p>
     </div>
 
     <div th:unless="${lista.isEmpty()}" class="container mt-4">
@@ -31,7 +32,7 @@
                     <td th:text="${pizza.id}"></td>
                     <td>
                         <div class="d-flex">
-                            <img th:src="${pizza.foto}" alt="Immagine pizza" class="rounded" style="width: 150px; height: 150px; object-fit: cover;">
+                            <a th:href="@{/pizze/show/{id}(id=${pizza.id})}"><img th:src="${pizza.foto}" alt="Immagine pizza" class="rounded" style="width: 150px; height: 150px; object-fit: cover;"></a>
                         </div>
                     </td>
                     <td th:text="${pizza.nome}"></td>
