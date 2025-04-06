@@ -4,3 +4,10 @@ body {
     font-style: normal;
 }
 
+.font-button:hover .btn-text {
+    display: none;
+}
+
+.font-button:hover i {
+    display: inline !important; 
+}

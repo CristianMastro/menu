@@ -2,10 +2,13 @@
 <header th:fragment="headerSito">
     <nav class="navbar bg-danger">
         <div class="container-fluid">
-          <a class="navbar-brand text-light" th:href="@{/pizze}">Cristian's pizza</a>
+          <a class="navbar-brand text-light" th:href="@{/pizze}">Cristian's pizza <i class="fa-solid fa-pizza-slice fa-bounce" style="color: #ffffff;"></i></a>
           <form class="d-flex" role="search" th:action="@{/pizze}" method="get">
             <input name="keyword" th:value="${keyword}" class="form-control me-2 font-placeholder" type="search" placeholder="Cerca la tua pizza..." aria-label="Search">
-            <button class="btn btn-outline-light font-button text-light" type="submit">Cerca</button>
+            <button class="btn btn-outline-light font-button text-light" type="submit">
+              <span class="btn-text">Cerca</span>
+              <i class="fa-solid fa-pizza-slice fa-spin d-none" style="color: #fb8e8e;"></i>
+            </button>
           </form>
         </div>
       </nav> 
