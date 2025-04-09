@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "pizze")
@@ -14,11 +16,18 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    
     @Column
+    @NotBlank(message = "Titolo non inserito")
     private String nome;
+
     @Column
+    @NotBlank(message = "Url non inserito")
     private String foto;
+
     @Column
+    @Min(value=0, message="Inserisci un valore maggiore di 0")
     private Double prezzo;
 
     public Integer getId() {
