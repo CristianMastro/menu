@@ -36,7 +36,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Prezzo</label>
-                <input type="text" class="form-control" id="prezzo" th:field="*{prezzo}" th:errorClass="is-invalid" placeholder="Inserisci il prezzo">
+                <input type="number" class="form-control" id="prezzo" th:field="*{prezzo}" th:errorClass="is-invalid" placeholder="Inserisci il prezzo">
                 <ul th:if="${#fields.hasErrors('prezzo')}">
                     <li th:each="err: ${#fields.errors('prezzo')}" class="text-danger" th:text="${err}"></li>
                 </ul>

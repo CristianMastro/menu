@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pizze")
@@ -27,6 +29,7 @@ public class Pizza {
     private String foto;
 
     @Column
+    @NotNull(message = "Inserisci un valore maggiore di 0")
     @Min(value=0, message="Inserisci un valore maggiore di 0")
     private Double prezzo;
 
