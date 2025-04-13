@@ -20,6 +20,8 @@ import pizzeria.menu.repository.PizzaRepository;
 
 
 
+
+
 @Controller
 @RequestMapping("/pizze")
 public class PizzeriaController {
@@ -54,13 +56,37 @@ public class PizzeriaController {
     }
 
     @PostMapping("/create")
-    public String bancone(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult ,Model model) {
+    public String create(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult ,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "/pizze/create";
         }
 
         pizzaRepository.save(formPizza);
+        return "redirect:/pizze";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("pizza", pizzaRepository.findById(id).get());
+        return "/pizze/edit";
+    }
+    
+    @PostMapping("/edit/{id}")
+    public String update(@Valid @ModelAttribute ("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+        
+        if (bindingResult.hasErrors()) {
+            return "pizze/edit";
+        }
+
+        pizzaRepository.save(formPizza);
+        return "redirect:/pizze";
+    }
+    
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+
+        pizzaRepository.deleteById(id);
         return "redirect:/pizze";
     }
     

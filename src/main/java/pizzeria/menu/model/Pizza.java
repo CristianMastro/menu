@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -20,15 +19,15 @@ public class Pizza {
     private Integer id;
 
     
-    @Column
+    @Column(nullable=false)
     @NotBlank(message = "Titolo non inserito")
     private String nome;
 
-    @Column
+    @Column(nullable=false)
     @NotBlank(message = "Url non inserito")
     private String foto;
 
-    @Column
+    @Column(nullable=false)
     @NotNull(message = "Inserisci un valore maggiore di 0")
     @Min(value=0, message="Inserisci un valore maggiore di 0")
     private Double prezzo;
