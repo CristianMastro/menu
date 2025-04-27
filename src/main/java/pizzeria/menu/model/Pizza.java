@@ -33,7 +33,7 @@ public class Pizza {
 
     @Column(nullable=false)
     @NotNull(message = "Inserisci un valore maggiore di 0")
-    @Min(value=0, message="Inserisci un valore maggiore di 0")
+    @Min(value=1, message="Inserisci un valore maggiore di 0")
     private Double prezzo;
 
     public Integer getId() {

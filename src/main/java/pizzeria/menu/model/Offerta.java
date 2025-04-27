@@ -2,7 +2,6 @@ package pizzeria.menu.model;
 
 import java.time.LocalDate;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Offerta {
@@ -19,12 +19,12 @@ public class Offerta {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @Nonnull
+    @NotNull(message="Inserisci una data da oggi in poi")
     private LocalDate inizioOfferta;
 
     private LocalDate fineOfferta;
 
-    @Nonnull
+    @NotNull(message="Inserisci un valore da 1 a 90%")
     @DecimalMin(value = "1.0", message = "La percentuale di sconto deve essere almeno di 1%")
     @DecimalMax(value = "90.0", message = "La percentuale di sconto deve essere massimo 90%")
     private Integer percentualeSconto;
