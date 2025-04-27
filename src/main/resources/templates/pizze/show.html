@@ -20,6 +20,38 @@
             <p>Prezzo: <span th:text="${pizza.prezzo} + ' €'"></span></p>
         </div>
     </div>
+
+    <div class="container text-center">
+        <div>
+            <a th:href="@{/pizze/{id}/offerte(id=${pizza.id})}"><button class="btn btn-success mb-2">Crea offerta</button></a>
+        </div>
+        <div th:if="${pizza.offerte.size() > 0}">
+            <h3>Offerte</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Inizio offerta</th>
+                        <th>Fine offerta</th>
+                        <th>Sconto %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="promo : ${pizza.offerte}">
+                        <td th:text="${promo.inizioOfferta}"></td>
+                        <td th:text="${promo.fineOfferta}"></td>
+                        <td th:text="${promo.percentualeSconto}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div th:unless="${pizza.offerte.size() > 0}">
+            <p>Non ci sono offerte presenti</p>
+        </div>
+
+
+    </div>
     
     <div th:if="${pizza == null}" class="container mt-3">
         <h2>Pizza non trovata</h2>

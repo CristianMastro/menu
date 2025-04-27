@@ -1,10 +1,12 @@
 package pizzeria.menu.model;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +20,8 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @OneToMany(mappedBy = "pizza")
+    private List<Offerta> offerte;
     
     @Column(nullable=false)
     @NotBlank(message = "Titolo non inserito")
@@ -64,6 +68,12 @@ public class Pizza {
         this.prezzo = prezzo;
     }
 
+    public List<Offerta> getOfferte() {
+        return offerte;
+    }
 
+    public void setOfferte(List<Offerta> offerte) {
+        this.offerte = offerte;
+    }
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
+import pizzeria.menu.model.Offerta;
 import pizzeria.menu.model.Pizza;
 import pizzeria.menu.repository.PizzaRepository;
 
@@ -88,6 +89,15 @@ public class PizzeriaController {
 
         pizzaRepository.deleteById(id);
         return "redirect:/pizze";
+    }
+    
+    @GetMapping("/{id}/offerte")
+    public String create(@PathVariable Integer id, Model model) {
+        Offerta promo = new Offerta();
+        promo.setPizza(pizzaRepository.findById(id).get());
+
+        model.addAttribute("promo", promo);
+        return "offerte/create";
     }
     
 
