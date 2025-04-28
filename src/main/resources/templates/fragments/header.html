@@ -2,7 +2,7 @@
 <header th:fragment="headerSito">
     <nav class="navbar bg-danger">
         <div class="container-fluid">
-          <a class="navbar-brand text-light" th:href="@{/pizze}">Cristian's pizza <i class="fa-solid fa-pizza-slice fa-bounce" style="color: #ffffff;"></i></a>
+          <a class="navbar-brand text-light" th:href="@{/pizze}">Cristian's pizza<img src="/img/pizzaIcon.png" alt="Logo Cristian's Pizza" style="height: 60px; margin-right: 10px;"></a>
           <a th:href="@{/pizze/create}" class="text-light">Crea la tua pizza</a>
           <form class="d-flex" role="search" th:action="@{/pizze}" method="get">
             <input name="keyword" th:value="${keyword}" class="form-control me-2 font-placeholder" type="search" placeholder="Cerca la tua pizza..." aria-label="Search">

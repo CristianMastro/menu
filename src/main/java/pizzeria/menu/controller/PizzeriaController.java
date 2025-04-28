@@ -17,10 +17,7 @@ import jakarta.validation.Valid;
 import pizzeria.menu.model.Offerta;
 import pizzeria.menu.model.Pizza;
 import pizzeria.menu.repository.PizzaRepository;
-
-
-
-
+import pizzeria.menu.repository.OffertaRepository;
 
 
 @Controller
@@ -29,6 +26,9 @@ public class PizzeriaController {
 
     @Autowired
     private PizzaRepository pizzaRepository;
+
+    @Autowired 
+    private OffertaRepository offertaRepository;
     
     @GetMapping
     public String index(Model model, @RequestParam(name="keyword", required =false) String nome) {
@@ -87,6 +87,10 @@ public class PizzeriaController {
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
 
+        Pizza pizza = pizzaRepository.findById(id).get();
+        for (Offerta offerte : pizza.getOfferte()){
+            offertaRepository.deleteById(offerte.getId());
+        }
         pizzaRepository.deleteById(id);
         return "redirect:/pizze";
     }
@@ -99,6 +103,5 @@ public class PizzeriaController {
         model.addAttribute("promo", promo);
         return "offerte/create";
     }
-    
 
 }
